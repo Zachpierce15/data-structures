@@ -1,8 +1,41 @@
 var Stack = function() {
   // Hey! Rewrite in the new style. Your code will wind up looking very similar,
   // but try not not reference your old code in writing the new style.
+  var instance = {
+  	storage : {} , 
+  	key : 0
+  };
+  
+  _.extend(instance, stackMethods)
+  return instance
 };
 
-var stackMethods = {};
+var stackMethods = {
+
+  	push : function(value) {
+   this.storage[this.key++] = value
+
+  	}, 
+ 		pop : function() { 
+ 	  	var arrOfKeys = Object.keys(this.storage);
+
+ 	  	var lastItem = arrOfKeys[arrOfKeys.length - 1]
+
+ 	  	var lastValue = this.storage[lastItem]
+ 	  	
+ 	  	delete this.storage[lastItem]
+
+ 	  	if (this.key === 0) {
+ 	  		this.key
+ 	  	} else {
+ 	  		this.key--
+ 	  	}
+ 	  	return lastValue
+		} ,
+ 		size : function() {
+			return this.key;
+		}
+  
+};
 
 
