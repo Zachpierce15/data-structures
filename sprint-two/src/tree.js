@@ -10,24 +10,19 @@ var Tree = function(value) {
 };
 
 var treeMethods = {};
-  
+ 
 treeMethods.addChild = function(value) {
   var node = Tree(value);
   this.children.push(node);
 };
 
 treeMethods.contains = function(target) {
-  debugger;
-  // let boolean = false
-  console.log("this", this.value)
   if (this.value === target) return true
-  
-  console.log(this.children.length)  
-    for (let i = 0; i < this.children.length; i++) {
-      if (this.children[i].contains(target)) {
-        return true;
-      }
+  for (let i = 0; i < this.children.length; i++) {
+    if (this.children[i].contains(target)) {
+      return true;
     }
+  }
   return false;
 };
 
